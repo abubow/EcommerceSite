@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import { useState, useEffect } from 'react';
+import { sliderData } from '../data';
 const Container = styled.div`
     display: flex;
     width: 100%;
@@ -10,6 +12,7 @@ const Container = styled.div`
     &:hover {
         cursor: pointer;
         }
+    overflow: hidden;
 `;
 
 const Arrow = styled.div`
@@ -28,10 +31,14 @@ const Arrow = styled.div`
     margin: auto;
     cursor: pointer;
     opacity: 0.5;
+    z-index: 2;
 `;
 
 const Wrapper = styled.div`
     height: 100%;
+    display: flex;
+    transition: transform 1s ease-in-out;
+    transform: translateX(${props => props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
@@ -41,6 +48,7 @@ const Slide = styled.div`
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+    background-color: ${props => props.bg};
 `;
 
 const ImgContainer = styled.div`
@@ -50,7 +58,6 @@ const ImgContainer = styled.div`
 `;
 const Image = styled.img`
     height: 100%;
-    width: 100%;
 `;
 
 const InfoContainer = styled.div`
@@ -59,40 +66,80 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-    font-size: 2em;
+    font-size: 5em;
     color: rgb(0, 0, 0);
-`
+`;
 const Description = styled.p`
     margin: 50px 0;
     font-size: 20px;
-`
+    letter-spacing: 1px;
+    font-weight: 500;
+`;
 
 const Button = styled.button`
-    background-color: #fafafa;
+    background-color: teal;
+    color: white;
     border: none;
-    `
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 500;
+`;
 
 
 function Slider() {
+    const [slideIndex, setSlideIndex] = useState(sliderData.length - 1);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setSlideIndex(slideIndex => {
+                if (slideIndex === sliderData.length - 1) {
+                    return 0;
+                }
+                return slideIndex + 1;
+            });
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+    const handleClick = (direction) => {
+        if (direction === 'left') {
+            setSlideIndex(slideIndex => {
+                if (slideIndex === 0) {
+                    return sliderData.length - 1;
+                }
+                return slideIndex - 1;
+            });
+        } else {
+            setSlideIndex(slideIndex => {
+                if (slideIndex === sliderData.length - 1) {
+                    return 0;
+                }
+                return slideIndex + 1;
+            });
+        }
+    };
+
   return (
     <Container>
-        <Arrow direction="left">
+        <Arrow direction="left" onClick={()=>handleClick('left')}>
             <ArrowBackIosNewRoundedIcon />
         </Arrow>
 
-        <Wrapper>
-            <Slide>
-                <ImgContainer>
-                    <Image src= "https://i.ibb.co/4mKC0LV/woman-Smile.png" />
-                </ImgContainer>
-                <InfoContainer>
-                    <Title>SUMMER SALE</Title>
-                    <Description>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam iste iure non odit minima, numquam exercitationem laboriosam facilis, reprehenderit perspiciatis quos, fugit fuga aliquam quod magni dolores eius eaque. Harum vel itaque provident ad atque, cupiditate tenetur iste ea corrupti deserunt pariatur illum perferendis eaque asperiores reiciendis nisi soluta labore sint porro aut. Mollitia iusto ipsam, delectus corrupti, amet autem omnis quidem aperiam quo qui corporis placeat natus perferendis? Libero amet necessitatibus ducimus, fugit asperiores tenetur dicta iusto in quo veritatis provident deserunt voluptatum harum? Placeat inventore eligendi id reprehenderit laborum cupiditate exercitationem, deleniti optio harum facilis provident nam sunt!</Description>
-                    <Button>Buy now</Button>
-                </InfoContainer>
-            </Slide>
+        <Wrapper slideIndex={slideIndex}>
+            {sliderData.map((slide) => (
+                <Slide bg={slide.bg}>
+                    <ImgContainer>
+                        <Image src={slide.img} />
+                    </ImgContainer>
+                    <InfoContainer>
+                        <Title>{slide.title}</Title>
+                        <Description>{slide.description}</Description>
+                        <Button>{slide.btnText}</Button>
+                    </InfoContainer>
+                </Slide>
+            ))}
+
         </Wrapper>
-        <Arrow direction="right">
+        <Arrow direction="right" onClick={()=>handleClick('right')}>
             <ArrowForwardIosRoundedIcon />
         </Arrow>
     </Container>
