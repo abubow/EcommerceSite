@@ -1,11 +1,20 @@
 import styled from 'styled-components';
-const Container = styled.div``
+import { categoryData } from '../data';
+import CategoryItem from './CategoryItem';
+
+const Container = styled.div`
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+`
 
 
 const Categories = () => {
   return (
     <Container>
-        <h1>Categories</h1>
+        {categoryData.map(category => (
+          <CategoryItem item = {category}/>
+        ))}
     </Container>
   )
 }
