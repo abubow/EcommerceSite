@@ -8,6 +8,7 @@ const Container = styled.div`
     flex-direction: column;
     padding: 20px;
     background-color: #fafafa;
+    height: 40vh;
 `
 const Title = styled.h1`
     font-size: 2.5rem;

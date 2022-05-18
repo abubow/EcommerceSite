@@ -77,7 +77,7 @@ const Description = styled.p`
 `;
 
 const Button = styled.button`
-    background-color: teal;
+    background-color: #ff6b6b;
     color: white;
     border: none;
     padding: 10px 20px;

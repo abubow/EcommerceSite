@@ -3,6 +3,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
+import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import PhoneIcon from '@mui/icons-material/Phone';
+import DraftsIcon from '@mui/icons-material/Drafts';
 const Container = styled.div`
     display: flex;
     justify-content: space-between;
@@ -48,6 +51,13 @@ const Right = styled.div`
 
 const Center = styled.div`
     flex: 1;
+`
+const ContactItem = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+`
+const Payment = styled.img`
 `
 
 const Footer = () => {
@@ -100,7 +110,20 @@ const Footer = () => {
             </List>
         </Center>
         <Right>
-
+            <Title>Contact Us</Title>
+            <ContactItem>
+                <FmdGoodIcon style = {{marginRight: "10px"}} />
+                Office, Lahore, Pakistan
+            </ContactItem>
+            <ContactItem>
+                <PhoneIcon style = {{marginRight: "10px"}}/>
+                +92-333-333-3333
+            </ContactItem>
+            <ContactItem>
+                <DraftsIcon style = {{marginRight: "10px"}}/>
+                contact@syedani.com
+            </ContactItem>
+            <Payment src = '../.images/payment.png' />
         </Right>
     </Container>
   )
