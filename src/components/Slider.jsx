@@ -3,6 +3,7 @@ import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRound
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import { useState, useEffect } from 'react';
 import { sliderData } from '../data';
+import { mobile } from '../responsive';
 const Container = styled.div`
     display: flex;
     width: 100%;
@@ -13,6 +14,7 @@ const Container = styled.div`
         cursor: pointer;
         }
     overflow: hidden;
+    ${mobile({ display: 'none' })};
 `;
 
 const Arrow = styled.div`
