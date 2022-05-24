@@ -3,15 +3,19 @@ import styled from 'styled-components'
 import { Search } from '@material-ui/icons';
 import { Badge } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import {mobile} from '../responsive'
 const Container = styled.div`
     height: 60px;
     border-bottom: 1px solid #e5e5e5;
+    ${mobile({ height: '0px' })};
+
 `;
 const Wrapper = styled.div`
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
-`;
+    ${mobile({ padding: '10px 0px' })};
+    `;
 const Left = styled.div`
     flex: 1;
     display: flex;
@@ -20,6 +24,7 @@ const Left = styled.div`
 const Language = styled.span`
     font-size: 12px;
     cursor: pointer;
+    ${mobile({ display: 'none' })};
 `
 const SearchContainer = styled.div`
     border: 0.5px solid #e5e5e5;
@@ -33,6 +38,7 @@ const Input = styled.input`
     outline: 0;
     background: transparent;
     color: #000;
+    ${mobile({ width: '50px' })};
 `
 const Center = styled.div`
     flex: 1;
