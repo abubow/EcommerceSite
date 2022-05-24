@@ -1,3 +1,4 @@
+import { Add, Remove } from "@mui/icons-material"
 import styled from "styled-components"
 import Announcements from "../components/Announcements"
 import Footer from "../components/Footer"
@@ -51,8 +52,103 @@ const TopText = styled.div`
     margin-right: 10px;
 `
 
-const Bottom = styled.div``
+const Bottom = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+const Info = styled.div`
+    flex: 3;
+`
+const Product = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+const ProductDetail = styled.div`
+    display: flex;
+    flex: 2;
+`
+const Image = styled.img`
+    width : 200px;
+`
+const Details = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+`
+const Name = styled.span``
+const ProductId = styled.span``
+const ProductColor = styled.div`
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: ${props => props.color};
+`
+const ProductSize = styled.span``
+const PriceDetail = styled.span`
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    flex-direction: column;
+`
+const ProductAmountContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+`
+const ProductAmount = styled.span`
+    font-size: 1.3rem;
+    margin: 5px;
+    
+`
+const ProductPrice = styled.span`
+    font-size: 1.5rem;
+    font-weight: 500;
+`
 
+const Hr = styled.hr`
+    background-color: #eee;
+    border: none;
+    height: 1px;
+`
+
+const Summary = styled.div`
+    flex: 1;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 20px;
+    height: 50vh;
+`
+const SummaryTitle = styled.h3``
+const SummaryPrice = styled.span``
+const SummaryItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+    font-weight: ${props => props.type === 'total' && '500'};
+    font-size: ${props => props.type === 'total' && '1.4rem'};
+`
+const SummaryText = styled.span``
+const Button = styled.button`
+    padding: 10px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;    
+    &:hover {
+        background: #fff;
+        color: #000;
+        border: 1px solid #000;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    }
+`
 const Cart = () => {
   return (
     <Container>
@@ -74,7 +170,69 @@ const Cart = () => {
                 
             </Top>
             <Bottom>
-
+                <Info>
+                    <Product>
+                        <ProductDetail>
+                            <Image src='https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'/>
+                            <Details>
+                                <Name> <b>Product:</b>Vans Old Skool Sneakers</Name>
+                                <ProductId><b>ID:</b>560956809</ProductId>
+                                <ProductColor color="red"/>
+                                <ProductSize><b>Size:</b> XL</ProductSize>
+                            </Details>
+                        </ProductDetail>
+                        <PriceDetail>
+                            <ProductAmountContainer>
+                                <Add/>
+                                <ProductAmount>1</ProductAmount>
+                                <Remove/>
+                            </ProductAmountContainer>
+                            <ProductPrice>$100</ProductPrice>
+                        </PriceDetail>
+                    </Product>
+                    <Hr/>
+                    <Product>
+                        <ProductDetail>
+                            <Image src='https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'/>
+                            <Details>
+                                <Name> <b>Product:</b>Vans Old Skool Sneakers</Name>
+                                <ProductId><b>ID:</b>560956809</ProductId>
+                                <ProductColor color="red"/>
+                                <ProductSize><b>Size:</b> XL</ProductSize>
+                            </Details>
+                        </ProductDetail>
+                        <PriceDetail>
+                            <ProductAmountContainer>
+                                <Add/>
+                                <ProductAmount>1</ProductAmount>
+                                <Remove/>
+                            </ProductAmountContainer>
+                            <ProductPrice>$100</ProductPrice>
+                        </PriceDetail>
+                    </Product>
+                </Info>
+                <Summary>
+                    <SummaryTitle>
+                        Cart Summary
+                    </SummaryTitle>
+                    <SummaryItem>
+                        <SummaryText>Subtotal:</SummaryText>
+                        <SummaryPrice>$100</SummaryPrice>
+                    </SummaryItem>
+                    <SummaryItem>
+                        <SummaryText>Estimated Shipping</SummaryText>
+                        <SummaryPrice>$5.99</SummaryPrice>
+                    </SummaryItem>
+                    <SummaryItem>
+                        <SummaryText>Shipping Discount</SummaryText>
+                        <SummaryPrice>$-5.99</SummaryPrice>
+                    </SummaryItem>
+                    <SummaryItem type = "total">
+                        <SummaryText>Total</SummaryText>
+                        <SummaryPrice>$-5.99</SummaryPrice>
+                    </SummaryItem>
+                    <Button>CHECKOUT NOW</Button>
+                </Summary>
             </Bottom>
         </Wrapper>
         <Footer/>
