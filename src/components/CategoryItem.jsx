@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
     flex: 1;
@@ -7,6 +8,7 @@ const Container = styled.div`
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     height: 70vh;
     position: relative;
+    ${mobile({ height: '60vh' })}
 `
 const Image = styled.img`
     width: 100%;
@@ -25,6 +27,7 @@ const Info = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    ${mobile({ backgroundColor: 'rgba(0, 0, 0, 0.1)' })};
 `
 const Title = styled.h3`
     font-size: 1.5rem;
@@ -32,6 +35,7 @@ const Title = styled.h3`
     color: white;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    ${mobile({ fontSize: '2rem' })}
 `
 const Button = styled.button`
     background-color: #ff6b6b;
@@ -45,6 +49,7 @@ const Button = styled.button`
     &:hover {
         background-color: #ff5252;
     }
+    ${mobile({ padding: '10px 20px' })}
 `
 
 const CategoryItem = ({item}) => {

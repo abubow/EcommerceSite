@@ -4,12 +4,14 @@ import Announcements from "../components/Announcements"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import Newsletter from "../components/Newsletter"
+import { mobile } from "../responsive"
 
 const Container = styled.div``
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding: 50px;
+  ${mobile({ flexDirection: 'column', padding: '10px', paddingBottom: '40px' })}
 `
 const ImgContainer =styled.div`
   flex: 1;
@@ -18,16 +20,22 @@ const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
+  ${mobile({ height: '40vh' })}
 `
 const InfoContainer =styled.div`
   flex: 1;
   padding: 0px 50px;
+  ${mobile({ padding: '10px' })}
 `
 const Title = styled.h1`
+  font-size: 40px;
   font-weight: 200;
+
+  ${mobile({ margin: '10px 0px' })}
 `
 
 const Description = styled.p`
+  font-size: 20px;
   margin: 20px 0px;
 `
 
@@ -41,6 +49,7 @@ const FilterContainer = styled.div`
   justify-content: space-between;
   width: 50%;
   margin: 20px 0px;
+  ${mobile({ width: '100%' })}
 `
 const Filter = styled.div`
   display: flex;
@@ -57,6 +66,7 @@ const FilterColor = styled.div`
   background-color: ${props => props.color};
   margin: 0px 5px;
   cursor: pointer;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,0.15);
 `
 const FilterSize = styled.select`
   padding:5px;
@@ -72,6 +82,7 @@ const AddContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 50%;
+  ${mobile({ width: '100%' })}
   `
 const AmountContainer = styled.div`
   display: flex;
@@ -116,7 +127,7 @@ const Product = () => {
         <InfoContainer>
           <Title>PlaceHolder Name</Title>
           <Description>
-            Lorem ipsum, dolor sit 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, quae! A iusto atque necessitatibus cumque reiciendis. Fugit explicabo eveniet laboriosam voluptas accusantium cupiditate numquam in, nostrum quidem debitis cum. Veniam explicabo non odio error quia, quam tempora voluptatum eligendi a qui atque ipsa quod nisi minus dicta recusandae enim voluptatibus asperiores! Dignissimos nesciunt quidem sunt, sapiente iste, voluptates debitis nobis repellendus tempore officiis fugiat aliquam quisquam, atque ipsum ut dolore architecto dolores hic fuga iure. Ipsam provident officia error debitis. 
           </Description>
           <Price>$ 90</Price>
           <FilterContainer>

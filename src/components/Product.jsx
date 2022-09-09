@@ -1,6 +1,6 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@mui/icons-material";
 import styled from "styled-components";
-
+import { mobile } from "../responsive";
 
 
 const Circle = styled.div`
@@ -67,6 +67,8 @@ const Container = styled.div`
     &:hover ${Info} {
         opacity: 1;
         transition: all 0.5s ease-in-out;
+    }
+    ${mobile({ height: '30vh', width: '100%' })}
     
 `
 const Product = ({item}) => {

@@ -3,11 +3,13 @@ import styled from "styled-components"
 import Announcements from "../components/Announcements"
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
+import { mobile } from "../responsive"
 
 const Container = styled.div``
 
 const Wrapper = styled.div`
     padding: 20px;
+    ${mobile({ padding: '10px' })}
 `
 
 const Title = styled.h1`
@@ -50,18 +52,24 @@ const TopText = styled.div`
     font-size: 1rem;
     font-weight: 300;
     margin-right: 10px;
+    ${mobile({ display: 'none' })}
 `
 
 const Bottom = styled.div`
     display: flex;
     justify-content: space-between;
+    ${mobile({ flexDirection: 'column' })}
 `
 const Info = styled.div`
     flex: 3;
+    display: flex;
+    flex-direction: column;
+    ${mobile({ marginTop: '20px' })}
 `
 const Product = styled.div`
     display: flex;
     justify-content: space-between;
+    ${mobile({ flexDirection: 'column' })}
 `
 const ProductDetail = styled.div`
     display: flex;
@@ -78,11 +86,19 @@ const Details = styled.div`
 `
 const Name = styled.span``
 const ProductId = styled.span``
+const ProductColorContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+`
 const ProductColor = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background: ${props => props.color};
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+    margin-right: 5px;
+    ${mobile({ height: '30px', width: '30px' })}
 `
 const ProductSize = styled.span``
 const PriceDetail = styled.span`
@@ -97,21 +113,24 @@ const ProductAmountContainer = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    ${mobile({ marginTop: '10px' })}
 `
 const ProductAmount = styled.span`
     font-size: 1.3rem;
     margin: 5px;
-    
+    ${mobile({ margin: '5px 20px' })}
 `
 const ProductPrice = styled.span`
     font-size: 1.5rem;
     font-weight: 500;
+    ${mobile({ marginBottom: '20px' })}
 `
 
 const Hr = styled.hr`
     background-color: #eee;
     border: none;
     height: 1px;
+    ${mobile({ margin: '20px 0px' })}
 `
 
 const Summary = styled.div`
@@ -177,7 +196,11 @@ const Cart = () => {
                             <Details>
                                 <Name> <b>Product:</b>Vans Old Skool Sneakers</Name>
                                 <ProductId><b>ID:</b>560956809</ProductId>
-                                <ProductColor color="red"/>
+                                <ProductColorContainer>
+                                    <ProductColor color="red"/>
+                                    <ProductColor color="white"/>
+                                    <ProductColor color="blue"/>
+                                </ProductColorContainer>
                                 <ProductSize><b>Size:</b> XL</ProductSize>
                             </Details>
                         </ProductDetail>
@@ -197,7 +220,11 @@ const Cart = () => {
                             <Details>
                                 <Name> <b>Product:</b>Vans Old Skool Sneakers</Name>
                                 <ProductId><b>ID:</b>560956809</ProductId>
-                                <ProductColor color="red"/>
+                                <ProductColorContainer>
+                                    <ProductColor color="red"/>
+                                    <ProductColor color="grey"/>
+                                    <ProductColor color="black"/>
+                                </ProductColorContainer>
                                 <ProductSize><b>Size:</b> XL</ProductSize>
                             </Details>
                         </ProductDetail>

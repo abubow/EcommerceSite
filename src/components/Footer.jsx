@@ -6,10 +6,12 @@ import PinterestIcon from '@mui/icons-material/Pinterest';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import PhoneIcon from '@mui/icons-material/Phone';
 import DraftsIcon from '@mui/icons-material/Drafts';
+import { mobile } from "../responsive";
 const Container = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    ${mobile({ flexDirection: 'column' })}
 `
 const Left = styled.div`
     flex: 1;
@@ -47,10 +49,12 @@ const ListItem = styled.li`
 
 const Right = styled.div`
     flex: 1;
+    ${mobile({ marginTop: '40px' })}
 `
 
 const Center = styled.div`
     flex: 1;
+    ${mobile({ display: 'none' })}
 `
 const ContactItem = styled.div`
     display: flex;
@@ -58,6 +62,8 @@ const ContactItem = styled.div`
     margin-bottom: 20px;
 `
 const Payment = styled.img`
+    height: 30px;
+    ${mobile({ height: '40px' })}
 `
 
 const Footer = () => {
@@ -123,7 +129,7 @@ const Footer = () => {
                 <DraftsIcon style = {{marginRight: "10px"}}/>
                 contact@syedani.com
             </ContactItem>
-            <Payment src = '../.images/payment.png' />
+            <Payment src="https://i.ibb.co/zN65Hyp/payment.png" alt="payment" border="0"/>
         </Right>
     </Container>
   )

@@ -7,7 +7,7 @@ import {mobile} from '../responsive'
 const Container = styled.div`
     height: 60px;
     border-bottom: 1px solid #e5e5e5;
-    ${mobile({ height: '50px' })};
+    ${mobile({ height: '50px', width: '100%' })}
 
 `;
 const Wrapper = styled.div`
@@ -24,21 +24,32 @@ const Left = styled.div`
 const Language = styled.span`
     font-size: 12px;
     cursor: pointer;
-    ${mobile({ display: "none" })};
+    ${mobile({ display: 'none', flex: 0 })}
 `;
 const SearchContainer = styled.div`
-    border: 0.5px solid #e5e5e5;
+    border: 1px solid #e5e5e5;
     border-radius: 5px;
     padding: 5px;
     margin-left: 25px;
     align-items: center;
+    display: flex;
+    ${mobile({ marginLeft: '10px', width: '70px' })}
 `;
 const Input = styled.input`
     border: 0;
     outline: 0;
     background: transparent;
     color: #000;
-    ${mobile({ width: '50px' })};
+    flex: 3;
+    ${mobile({fontSize: '10px', width: '70%'})}
+`;
+const SearchIconContainer = styled.div`
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex: 1;
+    ${mobile({ marginLeft: '0px', padding: '1px', width: '30%' })}
 `;
 const Center = styled.div`
     flex: 1;
@@ -50,6 +61,7 @@ const Logo = styled.div`
     font-size: 20px;
     font-weight: bold;
     cursor: pointer; 
+    ${mobile({ fontSize: '18px', padding: '0px 15px' })};
 `;
 const Right = styled.div`
     flex: 1;
@@ -65,7 +77,7 @@ const MenuItem = styled.div`
     &:last-child {
         margin-right: 0;
     }   
-    ${mobile({ fontSize: '12px', marginRight: '5px' })}; 
+    ${mobile({ fontSize: '14px', marginRight: '5px' })}; 
 `;
 
 const Navbar = () => {
@@ -76,7 +88,9 @@ const Navbar = () => {
                 <Language>En</Language>
                 <SearchContainer>
                     <Input placeholder="Search" />
-                    <SearchIcon style={{marginLeft: 5, cursor: 'pointer', color: 'grey', fontSize: '20px'}}/>
+                    <SearchIconContainer>
+                        <SearchIcon style={{marginLeft: '5px', cursor: 'pointer', color: 'grey', fontSize: '20px'}}/>
+                    </SearchIconContainer>
                 </SearchContainer>
             </Left>
             <Center>
